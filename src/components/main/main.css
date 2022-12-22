@@ -1,0 +1,87 @@
+.wrapper {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	justify-content: center;
+	margin-top: 50px;
+}
+
+.film-box {
+	box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+	width: 300px;
+	margin-left: 50px;
+	margin-bottom: 50px;
+	border-radius: 10px;
+}
+
+input {
+	padding: 10px 30px;
+	font-size: 24px;
+	cursor: pointer;
+}
+
+.poster {
+	border-radius: 10px 10px 0 0;
+}
+
+.title {
+	margin: 20px 20px;
+	font-size: 18px;
+}
+
+.footer-box {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 10px 20px;
+}
+
+.year {
+	color: #9a6e60;
+}
+
+.heard {
+	height: 20px;
+	width: 20px;
+}
+
+.form {
+	display: flex;
+	justify-content: center;
+}
+
+.fa-search {
+	position: relative;
+	top: 20px;
+	left: 25px;
+	margin-left: 5px;
+	height: 20px;
+	width: 20px;
+}
+
+.favourite {
+	cursor: pointer;
+	border-radius: 8px;
+	border: none;
+	background-color: rgb(72, 46, 133);
+	color: #fff;
+	margin-left: 100px;
+}
+
+.favourite:hover {
+	background-color: rgb(138, 55, 55);
+}
+
+.fa-solid {
+	cursor: pointer;
+}
+
+.fa-heart:hover {
+	color: red;
+}
+
+.favouriteBtn {
+	border: none;
+	background-color: #fff;
+	cursor: pointer;
+	font-size: 24px;
+}
