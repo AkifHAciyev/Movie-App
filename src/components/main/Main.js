@@ -28,13 +28,20 @@ const Main = () => {
 	};
 
 	const handleAddFavourite = (film) => {
-		const newFavouriteList = [...addFavourite, film];
+		const newFavouriteList = () => {
+			if (addFavourite.includes(film)) {
+				return addFavourite.filter((e) => e !== film);
+			} else {
+				return [...addFavourite, film];
+			}
+		};
 		setAddFavourite(newFavouriteList);
 		saveToLocalStorage(newFavouriteList);
 	};
 
 	const handleShowFavourite = () => {
 		setShowFavourite((e) => !e);
+		console.log('gerger', showFavourite);
 	};
 
 	const removeFavourite = (film) => {
@@ -44,15 +51,20 @@ const Main = () => {
 		saveToLocalStorage(newFavouriteList);
 	};
 
+	console.log(showFavourite);
+
 	return (
 		<>
-			<form className="form" action="">
-				<i className="fa fa-search" aria-hidden="true"></i>
-				<input onChange={(e) => setSearchedVal(e.target.value)} type="text" placeholder="search by name" />
+			<header className="header">
+				<form className="form" action="">
+					<i className="fa fa-search" aria-hidden="true"></i>
+					<input onChange={(e) => setSearchedVal(e.target.value)} type="text" placeholder="search by name" />
+				</form>
 				<button onClick={handleShowFavourite} className="favourite">
 					{(!showFavourite && 'Favourite') || 'Close Favourite'}
 				</button>
-			</form>
+			</header>
+
 			{showFavourite && <h2>Favourite</h2>}
 			<div className="wrapper">
 				{showFavourite &&
@@ -62,9 +74,7 @@ const Main = () => {
 								<img className="poster" src={film.Poster} alt="" />
 								<div className="box-title">
 									<div className="title">{film.Title}</div>
-									<button onClick={() => removeFavourite(film)} className="favouriteBtn">
-										<i className="fa fa-trash" aria-hidden="true"></i>
-									</button>
+									<i onClick={() => removeFavourite(film)} className="fa fa-trash" aria-hidden="true"></i>
 								</div>
 
 								<div className="footer-box">
@@ -78,16 +88,17 @@ const Main = () => {
 
 			<div className="wrapper">
 				{loading && <h1>Loading...</h1>}
-				{films &&
+				{films ? (
 					films.map((film) => {
 						return (
 							<div key={film.imdbID} className="film-box">
 								<img className="poster" src={film.Poster} alt="" />
 								<div className="box-title">
 									<div className="title">{film.Title}</div>
-									<button onClick={() => handleAddFavourite(film)} className="favouriteBtn">
-										<i className="fa-solid fa-heart"></i>
-									</button>
+									<i
+										onClick={() => handleAddFavourite(film)}
+										className={addFavourite.includes(film) ? 'fa-solid fa-heart' : 'fa-regular fa-heart'}
+									></i>
 								</div>
 
 								<div className="footer-box">
@@ -96,7 +107,12 @@ const Main = () => {
 								</div>
 							</div>
 						);
-					})}
+					})
+				) : (
+					<div className="section">
+						<h1>Empty...</h1>
+					</div>
+				)}
 			</div>
 		</>
 	);

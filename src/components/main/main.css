@@ -6,17 +6,19 @@
 }
 
 .film-box {
-	box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+	box-shadow: rgba(178, 171, 218, 0.15) 0px 48px 100px 0px;
 	width: 300px;
 	margin-left: 50px;
 	margin-bottom: 50px;
 	border-radius: 10px;
+	background-color: rgb(202, 198, 198);
 }
 
 input {
 	padding: 10px 30px;
 	font-size: 24px;
 	cursor: pointer;
+	border-radius: 8px;
 }
 
 .poster {
@@ -58,6 +60,12 @@ input {
 	width: 20px;
 }
 
+.header {
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+}
+
 .favourite {
 	cursor: pointer;
 	border-radius: 8px;
@@ -78,10 +86,9 @@ input {
 .fa-heart:hover {
 	color: red;
 }
-
-.favouriteBtn {
+.fa-trash,
+.fa-heart {
 	border: none;
-	background-color: #fff;
 	cursor: pointer;
 	font-size: 24px;
 }
